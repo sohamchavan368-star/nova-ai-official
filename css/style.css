@@ -168,6 +168,43 @@ body{
     border-radius:12px;
 
 }
+.secondary-btn:hover{
+
+    background:var(--primary);
+    color:#ffffff;
+
+    border-color:var(--primary);
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 30px rgba(37,99,235,.25);
+
+}
+.secondary-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:skewX(-30deg);
+
+    transition:.6s;
+
+}
+
+.secondary-btn:hover::before{
+
+    left:120%;
+
+}
 /* ==============================
    HERO
 ================================= */
