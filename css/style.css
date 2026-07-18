@@ -913,6 +913,9 @@ footer hr{
     margin:0 auto;
     display:block;
 }
+   .hero-image{
+    border:2px solid red;   /* TEMPORARY - just to see the box */
+}
 
     .hero-buttons{
 
