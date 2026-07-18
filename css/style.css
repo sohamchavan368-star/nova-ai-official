@@ -908,8 +908,8 @@ footer hr{
 }
 
 .hero-image img{
-    width:78%;
-    max-width:260px;
+    width:90%;
+    max-width:320px;
     aspect-ratio:5/5;        /* try adjusting this ratio if needed */
     object-fit:cover;
     object-position:30% center;   /* shifts the visible crop leftward to hide the excess right-side gap */
