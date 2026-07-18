@@ -914,7 +914,7 @@ footer hr{
     display:block;
 }
    .hero-image{
-    border:2px solid red;   /* TEMPORARY - just to see the box */
+    border:1px solid white;   /* TEMPORARY - just to see the box */
 }
 
     .hero-buttons{
