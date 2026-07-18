@@ -904,15 +904,19 @@ footer hr{
 
         width:100%;
 
+        display:flex;
+
         justify-content:center;
 
     }
 
     .hero-image img{
 
-        max-width:280px;
+        max-width:260px;
 
-        width:80%;
+        width:78%;
+
+        margin-left:-14px;   /* small visual nudge — the artwork has more weight on the right side (extra cards/icons) than the left (just the laptop), so a true center puts the robot slightly right-looking */
 
     }
 
@@ -1021,34 +1025,40 @@ footer hr{
         padding:30px 22px;
     }
 
-    /* ---------- FOOTER (mobile) ---------- */
+    /* ---------- FOOTER (mobile) ----------
+       Standard layout: brand block spans full width on
+       top, then Quick Links + Support sit side-by-side
+       as two columns below (not one long stacked list). */
 
     footer{
         padding:50px 6% 25px;
     }
 
     .footer-content{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-        gap:0;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        column-gap:20px;
+        row-gap:0;
     }
 
     .footer-content > div{
-        width:100%;
-        max-width:320px;
         display:flex;
         flex-direction:column;
-        align-items:center;
-        padding:26px 0;
-    }
-
-    .footer-content > div:not(:last-child){
-        border-bottom:1px solid rgba(255,255,255,.1);  /* soft divider between blocks */
     }
 
     .footer-content > div:first-child{
-        padding-top:0;
+        grid-column:1 / -1;
+        align-items:center;
+        text-align:center;
+        padding-bottom:28px;
+        margin-bottom:28px;
+        border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .footer-content > div:nth-child(2),
+    .footer-content > div:nth-child(3){
+        align-items:flex-start;
+        text-align:left;
     }
 
     .footer-content h3{
@@ -1056,7 +1066,7 @@ footer hr{
     }
 
     .footer-content h4{
-        font-size:15px;
+        font-size:14px;
         text-transform:uppercase;
         letter-spacing:.5px;
         color:#94a3b8;
@@ -1075,9 +1085,19 @@ footer hr{
         margin-bottom:0;
     }
 
+    .footer-content a{
+        font-size:14px;
+    }
+
     .copyright{
-        margin-top:25px;
+        margin-top:30px;
+        padding-top:20px;
+        border-top:1px solid rgba(255,255,255,.1);
         font-size:13px;
+    }
+
+    footer hr{
+        display:none;   /* replaced by the border-top on .copyright above */
     }
 
 }
