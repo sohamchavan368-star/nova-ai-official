@@ -61,6 +61,16 @@ body{
 
     padding:25px 8%;
 
+    position:sticky;
+
+    top:0;
+
+    background:white;
+
+    z-index:1000;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+
 }
 
 .navbar{
@@ -170,7 +180,6 @@ body{
 .hero{
 
     width:100%;
-
     min-height:90vh;
 
     display:flex;
@@ -179,13 +188,15 @@ body{
 
     align-items:center;
 
-    padding: 80px 8%;
+    gap:80px;
+
+    padding:80px 8%;
 
 }
-
 .hero-left{
-    flex: 1;
-    width:50%;
+
+    flex:1;
+    max-width:600px;
 
 }
 
@@ -216,11 +227,11 @@ body{
 
 .hero h1{
 
-    font-size:65px;
+    font-size:64px;
 
-    line-height:1.2;
+    line-height:1.1;
 
-    margin-bottom:25px;
+    max-width:620px;
 
 }
 
@@ -228,11 +239,9 @@ body{
 
     font-size:18px;
 
-    color:var(--text);
+    max-width:520px;
 
     line-height:1.8;
-
-    margin-bottom:35px;
 
 }
 
@@ -276,7 +285,9 @@ body{
 .hero-image img{
 
     width:100%;
-    max-width:550px;
+
+    max-width:470px;
+
     height:auto;
 
     animation:float 4s ease-in-out infinite;
@@ -602,14 +613,17 @@ footer{
 
 .footer-content{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:2fr 1fr 1fr;
+    justify-content:space-between;
 
-    gap:50px;
+    align-items:flex-start;
+
+    flex-wrap:wrap;
+
+    gap:60px;
 
 }
-
 .footer-content h3,
 .footer-content h4{
 
@@ -672,37 +686,7 @@ footer hr{
    RESPONSIVE DESIGN
 ========================== */
 
-@media (max-width:768px){
 
-    .hero{
-        flex-direction:column;
-        text-align:center;
-        padding:40px 8%;
-    }
-
-    .hero-left{
-        width:100%;
-    }
-
-    .hero-right{
-        width:100%;
-        margin-top:40px;
-    }
-
-    .hero h1{
-        font-size:45px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-        flex-wrap:wrap;
-    }
-
-}
 /* ======================================
         MOBILE RESPONSIVE
 ====================================== */
@@ -751,11 +735,16 @@ footer hr{
     font-size:17px;
 }
 
-.hero-right{
+.hero-buttons{
+
     display:flex;
+
     justify-content:center;
+
     gap:15px;
+
     flex-wrap:wrap;
+
 }
 
 .hero-image{
