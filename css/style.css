@@ -910,7 +910,7 @@ footer hr{
 .hero-image img{
     max-width:260px;
     width:78%;
-    margin:0 auto 0 -1px;
+    margin:0 auto 0;
     display:block;
 }
 
