@@ -900,22 +900,22 @@ footer hr{
 
     }
 
-   .hero-image{
+ .hero-image{
     width:100%;
     display:flex;
     justify-content:center;
-    text-align:center;
+    overflow:hidden;
 }
 
 .hero-image img{
-    max-width:260px;
     width:78%;
+    max-width:260px;
+    aspect-ratio:5/5;        /* try adjusting this ratio if needed */
+    object-fit:cover;
+    object-position:30% center;   /* shifts the visible crop leftward to hide the excess right-side gap */
     margin:0 auto;
-    display:block;
 }
-   .hero-image{
-    border:1px solid white;   /* TEMPORARY - just to see the box */
-}
+   
 
     .hero-buttons{
 
