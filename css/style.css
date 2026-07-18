@@ -148,23 +148,7 @@ body{
 
 }
 
-.primary-btn{
 
-    padding:12px 28px;
-
-    background:var(--primary);
-
-    color:white;
-
-    border:none;
-
-    border-radius:50px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
 
 .primary-btn:hover{
 
