@@ -81,6 +81,8 @@ body{
 
     align-items:center;
 
+    position:relative; /* needed so mobile dropdown can anchor to navbar */
+
 }
 
 .logo{
@@ -122,42 +124,62 @@ body{
     color:var(--primary);
 
 }
-/* ==============================
-   BUTTONS
-================================= */
 
-.nav-buttons{
+/* Hamburger icon - hidden on desktop/tablet, shown on mobile only */
 
-    display:flex;
+.menu-toggle{
 
-    gap:15px;
+    display:none;
 
-}
+    flex-direction:column;
 
-.login-btn{
+    justify-content:center;
 
-    padding:12px 25px;
-
-    background:transparent;
-
-    border:none;
-
-    font-size:16px;
+    gap:5px;
 
     cursor:pointer;
 
-}
-
-
-
-.primary-btn:hover{
-
-    transform:translateY(-4px);
-
-    background:var(--secondary);
+    z-index:1100;
 
 }
-.primary-btn{
+
+.menu-toggle span{
+
+    width:26px;
+
+    height:3px;
+
+    background:var(--dark);
+
+    border-radius:3px;
+
+    transition:.3s;
+
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+}
+
+/* ==============================
+   BUTTONS  (unified pill / capsule style)
+   -> .primary-btn and .secondary-btn now share
+      identical sizing/shape, only color differs.
+   -> This is what makes "Get Started" and
+      "Start Free Trial" look the same, and
+      "Watch Demo" match the same shape/size.
+================================= */
+
+.primary-btn,
+.secondary-btn{
 
     padding:16px 36px;
 
@@ -165,9 +187,48 @@ body{
 
     font-weight:600;
 
-    border-radius:12px;
+    border-radius:50px;   /* pill shape - rounded rectangle, not a circle */
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
 
 }
+
+.primary-btn{
+
+    border:none;
+
+    background:linear-gradient(135deg, var(--primary), var(--secondary));
+
+    color:var(--white);
+
+    box-shadow:0 10px 25px rgba(37,99,235,.25);
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(37,99,235,.35);
+
+}
+
+.secondary-btn{
+
+    background:transparent;
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+}
+
 .secondary-btn:hover{
 
     background:var(--primary);
@@ -180,6 +241,7 @@ body{
     box-shadow:0 15px 30px rgba(37,99,235,.25);
 
 }
+
 .secondary-btn::before{
 
     content:"";
@@ -205,6 +267,21 @@ body{
     left:120%;
 
 }
+
+.login-btn{
+
+    padding:12px 25px;
+
+    background:transparent;
+
+    border:none;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
 /* ==============================
    HERO
 ================================= */
@@ -322,6 +399,8 @@ body{
 
 .hero-buttons{
     margin-top:15px;
+    display:flex;
+    gap:20px;
 }
 
 /* ===============================
@@ -689,64 +768,183 @@ footer hr{
     color:#94a3b8;
 
 }
-/* ==========================
+
+/* ==========================================================
    RESPONSIVE DESIGN
-========================== */
 
+   Breakpoint choice on purpose:
+   - Anything ABOVE 640px (tablets in portrait ~768px+, laptops,
+     desktops) uses the SAME layout — the normal grid/flex rules
+     above already handle that, no extra media query needed.
+   - ONLY screens 640px and below (phones) get the special,
+     restructured "mobile" layout below.
+========================================================== */
 
-/* ======================================
-        MOBILE RESPONSIVE
-====================================== */
+@media(max-width:640px){
 
-@media(max-width:768px){
+    /* ---------- NAVBAR (mobile) ---------- */
 
-.hero{
+    .header{
+        padding:18px 6%;
+    }
 
-    flex-direction:column;
+    .menu-toggle{
+        display:flex;
+    }
 
-    text-align:center;
+    .header .primary-btn{
+        display:none; /* keep the mobile bar clean, CTA lives in the menu instead */
+    }
 
-    gap:40px;
+    .nav-links{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        flex-direction:column;
+        align-items:center;
+        gap:0;
+        background:#ffffff;
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .4s ease;
+        box-shadow:0 15px 25px rgba(0,0,0,.08);
+    }
 
-    padding:50px 20px;
+    .nav-links.active{
+        max-height:400px;
+        padding:20px 0;
+    }
+
+    .nav-links li{
+        margin:14px 0;
+    }
+
+    /* ---------- HERO (mobile) ---------- */
+
+    .hero{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:40px;
+
+        padding:50px 6%;
+
+        min-height:auto;
+
+    }
+
+    .hero-left{
+
+        width:100%;
+
+    }
+
+    .hero-image{
+
+        width:100%;
+
+        justify-content:center;
+
+        order:-1; /* image first, then heading — unique mobile order */
+
+    }
+
+    .hero-image img{
+
+        max-width:280px;
+
+        width:80%;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+    .hero h1{
+
+        font-size:38px;
+
+        max-width:100%;
+
+    }
+
+    .hero p{
+
+        font-size:17px;
+
+        max-width:100%;
+
+    }
+
+    .primary-btn,
+    .secondary-btn{
+        padding:14px 28px;
+        font-size:15px;
+    }
+
+    /* ---------- FEATURES + SERVICES (mobile) ----------
+       Instead of shrinking the 3-column grid, turn each
+       card into a horizontal icon-left / text-right row.
+       This is the "unique mobile structure" — a list style
+       rather than a card grid. */
+
+    .feature-container,
+    .services-container{
+        display:flex;
+        flex-direction:column;
+        grid-template-columns:none;
+        gap:16px;
+    }
+
+    .feature-card,
+    .service-card{
+        width:100%;
+        display:flex;
+        align-items:center;
+        text-align:left;
+        gap:20px;
+        padding:22px 20px;
+    }
+
+    .icon,
+    .service-icon{
+        font-size:34px;
+        margin-bottom:0;
+        flex-shrink:0;
+    }
+
+    .section-title h2,
+    #services h2{
+        font-size:30px;
+    }
+
+    /* ---------- TESTIMONIALS + CONTACT (mobile) ---------- */
+
+    #testimonials,
+    #contact,
+    .features,
+    #services{
+        padding:60px 6%;
+    }
+
+    .testimonial-card{
+        padding:30px 22px;
+    }
+
+    /* ---------- FOOTER (mobile) ---------- */
+
+    .footer-content{
+        flex-direction:column;
+        text-align:center;
+        gap:35px;
+    }
 
 }
-
-.hero-left{
-
-    width:100%;
-
-}
-
-.hero-image{
-
-    width:100%;
-
-    justify-content:center;
-
-}
-
-.hero-image img{
-
-    max-width:320px;
-
-    width:85%;
-
-}
-
-.hero-buttons{
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-}
-
-.hero h1{
-
-    font-size:42px;
-
-}
-
-}
-
