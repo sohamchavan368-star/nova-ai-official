@@ -896,29 +896,23 @@ footer hr{
 
     .hero-left{
 
-        width:100%;
+        width:100%;       
 
     }
 
-    .hero-image{
+   .hero-image{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    text-align:center;
+}
 
-        width:100%;
-
-        display:flex;
-
-        justify-content:center;
-
-    }
-
-    .hero-image img{
-
-        max-width:260px;
-
-        width:78%;
-
-        margin-left:-14px;   /* small visual nudge — the artwork has more weight on the right side (extra cards/icons) than the left (just the laptop), so a true center puts the robot slightly right-looking */
-
-    }
+.hero-image img{
+    max-width:260px;
+    width:78%;
+    margin:0 auto;
+    display:block;          /* small visual nudge — the artwork has more weight on the right side (extra cards/icons) than the left (just the laptop), so a true center puts the robot slightly right-looking */
+}
 
     .hero-buttons{
 
