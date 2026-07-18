@@ -838,6 +838,43 @@ footer hr{
      restructured "mobile" layout below.
 ========================================================== */
 
+/* ---------- LAPTOP / MID-SIZE DESKTOP ----------
+   On typical laptop screens (1280-1440px wide, ~700-800px
+   tall visible area after browser chrome), the 78px heading
+   + 90vh min-height pushes the CTA buttons just below the
+   fold. This scales things down slightly so the whole hero
+   — heading, paragraph, and buttons — fits in view without
+   needing to scroll. Large external monitors (above 1440px)
+   are untouched and keep the bigger, bolder desktop sizing. */
+
+@media(min-width:641px) and (max-width:1440px){
+
+    .hero{
+        min-height:auto;
+        padding:60px 8%;
+        gap:50px;
+    }
+
+    .hero h1{
+        font-size:52px;
+        margin-bottom:22px;
+    }
+
+    .hero p{
+        font-size:18px;
+        margin-bottom:28px;
+    }
+
+    .tag{
+        margin-bottom:22px;
+    }
+
+    .hero-image img{
+        max-width:420px;
+    }
+
+}
+
 @media(max-width:640px){
 
     /* ---------- NAVBAR (mobile) ---------- */
@@ -896,26 +933,29 @@ footer hr{
 
     .hero-left{
 
-        width:100%;       
+        width:100%;
 
     }
 
- .hero-image{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    overflow:hidden;
-}
+    .hero-image{
 
-.hero-image img{
-    width:90%;
-    max-width:320px;
-    aspect-ratio:5/5;        /* try adjusting this ratio if needed */
-    object-fit:cover;
-    object-position:30% center;   /* shifts the visible crop leftward to hide the excess right-side gap */
-    margin:0 auto;
-}
-   
+        width:100%;
+
+        display:flex;
+
+        justify-content:center;
+
+    }
+
+    .hero-image img{
+
+        max-width:260px;
+
+        width:78%;
+
+        margin-left:-14px;   /* small visual nudge — the artwork has more weight on the right side (extra cards/icons) than the left (just the laptop), so a true center puts the robot slightly right-looking */
+
+    }
 
     .hero-buttons{
 
