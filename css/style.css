@@ -39,6 +39,14 @@
    BODY
 ================================= */
 
+html{
+
+    max-width:100%;
+
+    overflow-x:hidden;
+
+}
+
 body{
 
     background:linear-gradient(
@@ -49,6 +57,20 @@ body{
     );
 
     color:var(--dark);
+
+    max-width:100%;
+
+    overflow-x:hidden;   /* prevents the page from scrolling sideways on mobile */
+
+}
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+    display:block;
 
 }
 /* ==============================
@@ -365,6 +387,42 @@ body{
         transform:translateY(0);
     }
 
+}
+
+/* Subtle entrance animation for hero content on page load */
+
+@keyframes fadeInUp{
+
+    from{
+        opacity:0;
+        transform:translateY(24px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.tag{
+    animation:fadeInUp .6s ease both;
+}
+
+.hero h1{
+    animation:fadeInUp .6s ease .1s both;
+}
+
+.hero p{
+    animation:fadeInUp .6s ease .2s both;
+}
+
+.hero-buttons{
+    animation:fadeInUp .6s ease .3s both;
+}
+
+.hero-image img{
+    animation:fadeInUp .7s ease .2s both, float 4s ease-in-out .9s infinite;
 }
 .tag{
 
@@ -848,8 +906,6 @@ footer hr{
 
         justify-content:center;
 
-        order:-1; /* image first, then heading — unique mobile order */
-
     }
 
     .hero-image img{
@@ -862,9 +918,18 @@ footer hr{
 
     .hero-buttons{
 
-        justify-content:center;
+        flex-direction:column;
 
-        flex-wrap:wrap;
+        width:100%;
+
+        gap:14px;
+
+    }
+
+    .hero-buttons .primary-btn,
+    .hero-buttons .secondary-btn{
+
+        width:100%;
 
     }
 
@@ -892,9 +957,9 @@ footer hr{
 
     /* ---------- FEATURES + SERVICES (mobile) ----------
        Instead of shrinking the 3-column grid, turn each
-       card into a horizontal icon-left / text-right row.
-       This is the "unique mobile structure" — a list style
-       rather than a card grid. */
+       card into a compact list row: icon + title share the
+       top line, and the description flows full-width
+       underneath — no squeezed/wrapping text column. */
 
     .feature-container,
     .services-container{
@@ -908,17 +973,34 @@ footer hr{
     .service-card{
         width:100%;
         display:flex;
+        flex-wrap:wrap;
         align-items:center;
         text-align:left;
-        gap:20px;
-        padding:22px 20px;
+        column-gap:16px;
+        row-gap:10px;
+        padding:24px 22px;
     }
 
     .icon,
     .service-icon{
-        font-size:34px;
+        font-size:32px;
         margin-bottom:0;
-        flex-shrink:0;
+        flex:0 0 auto;
+    }
+
+    .feature-card h3,
+    .service-card h3{
+        margin-bottom:0;
+        font-size:19px;
+        flex:1 1 auto;
+        min-width:0;
+    }
+
+    .feature-card p,
+    .service-card p{
+        flex:0 0 100%;   /* forces the paragraph onto its own full-width line */
+        font-size:15px;
+        line-height:1.65;
     }
 
     .section-title h2,
@@ -941,10 +1023,61 @@ footer hr{
 
     /* ---------- FOOTER (mobile) ---------- */
 
+    footer{
+        padding:50px 6% 25px;
+    }
+
     .footer-content{
         flex-direction:column;
+        align-items:center;
         text-align:center;
-        gap:35px;
+        gap:0;
+    }
+
+    .footer-content > div{
+        width:100%;
+        max-width:320px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        padding:26px 0;
+    }
+
+    .footer-content > div:not(:last-child){
+        border-bottom:1px solid rgba(255,255,255,.1);  /* soft divider between blocks */
+    }
+
+    .footer-content > div:first-child{
+        padding-top:0;
+    }
+
+    .footer-content h3{
+        font-size:22px;
+    }
+
+    .footer-content h4{
+        font-size:15px;
+        text-transform:uppercase;
+        letter-spacing:.5px;
+        color:#94a3b8;
+        margin-bottom:16px;
+    }
+
+    .footer-content ul{
+        padding:0;
+        margin:0;
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .footer-content li{
+        margin-bottom:0;
+    }
+
+    .copyright{
+        margin-top:25px;
+        font-size:13px;
     }
 
 }
